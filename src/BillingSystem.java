@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Handles billing operations, including generating invoices for clients.
  */
