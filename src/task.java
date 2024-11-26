@@ -11,14 +11,21 @@ public class Task {
     /**
      * Constructor to initialize a Task with basic details.
      *
-     * @param type               The type of task (e.g., "Cleaning", "Laundry").
-     * @param duration           Duration of the task in minutes.
-     * @param cost               Cost of the task.
-     * @param livingRoomCleaning
+     * @param type        The type of task (e.g., "Cleaning", "Laundry").
+     * @param duration    Duration of the task in minutes.
+     * @param cost        Cost of the task.
+     * @param description Description of the task.
+     * @throws IllegalArgumentException if any input is invalid.
      */
-    public Task(String type, int duration, double cost, String livingRoomCleaning) {
+    public Task(String type, int duration, double cost, String description) {
+        if (type == null || type.trim().isEmpty()) {
+            throw new IllegalArgumentException("Task type cannot be null or empty.");
+        }
+        if (description == null || description.trim().isEmpty()) {
+            throw new IllegalArgumentException("Task description cannot be null or empty.");
+        }
         if (duration <= 0 || cost < 0) {
-            throw new IllegalArgumentException("Invalid task details: Duration and cost must be positive.");
+            throw new IllegalArgumentException("Invalid task details: Duration must be positive and cost must not be negative.");
         }
         this.type = type;
         this.duration = duration;
